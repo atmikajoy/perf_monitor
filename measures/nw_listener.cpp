@@ -13,7 +13,7 @@ namespace perf_monitor
 			std::clog << "nw_listener log: " << msg << '\n' << std::flush;
 		};
 
-		constexpr char port_number[] = "25678";
+		constexpr char port_number[] = "23456";
 
 	}
 

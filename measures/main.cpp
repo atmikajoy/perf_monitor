@@ -24,6 +24,10 @@
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <stdio.h>
+#include "local_reporter.h"
+#include "perf_collector.h"
+#include "nw_listener.h"
+#include "perf_server.h"
 
 // Need to link with Ws2_32.lib
 #pragma comment(lib, "ws2_32.lib")
@@ -31,6 +35,32 @@
 
 int main()
 {
+	using namespace perf_monitor;
+	using namespace counter_names;
+
+	local_reporter reporter;
+	perf_recorder recorder({ CPU, MEMINUSE_BYTES, CONTEXT_SWITCHES_PER_SEC }, 5, reporter);
+
+	// nw_listener listener;
+	// listener.start_listening();
+	perf_server server;
+	server.start_listening();
+
+
+	std::cin.get();
+	recorder.done = true;
+	// server.stopping = true;
+	server.initiate_shutdown();
+	// listener.stopping = true;
+	// std::cin.get();
+	// listener.Disconnect();
+	std::cout << "waiting for 100 seconds..." << std::flush;
+	for (int i = 0; i < 2 ; ++i)
+	{
+		std::this_thread::sleep_for(std::chrono::seconds(5));
+		std::cout << '.' << std::flush;
+	}
+	std::cout << " done\n";
 }
 
 /*

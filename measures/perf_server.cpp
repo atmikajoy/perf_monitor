@@ -111,7 +111,7 @@ namespace perf_monitor
 			const auto cntrs = process_request(request);
 			for (const counter& cntr : cntrs )
 			{
-				const auto& reply = reply::to_string(cntr);
+				const auto reply = reply::to_string(cntr);
 				if (send(connected_socket, reply.c_str(), reply::STRING_LENGTH, 0) == SOCKET_ERROR)
 				{
 					connected = false;

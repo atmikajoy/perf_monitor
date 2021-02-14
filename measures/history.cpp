@@ -64,7 +64,7 @@ namespace perf_monitor
 
 		std::ostream& history_log()
 		{
-			static const std::string log_file_name = "history.log." + time_stamp() + ".txt" ;
+			static const std::string log_file_name = "history/history.log." + time_stamp() + ".txt" ;
 			static std::ofstream log_file(log_file_name);
 			return log_file;
 		}

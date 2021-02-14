@@ -1,3 +1,6 @@
+#ifndef PERF_SERVER_H_INCLUDED
+#define PERF_SERVER_H_INCLUDED
+
 #include "TCPServer.h"
 
 namespace perf_monitor
@@ -20,3 +23,5 @@ namespace perf_monitor
 		static std::atomic<int> num_connections ;
 	};
 };
+
+#endif // PERF_SERVER_H_INCLUDED

@@ -1,0 +1,3 @@
+1. LAPTOP-EBCTSM8H : \Memory\Committed Bytes : 31613132800 (1612795292 08/02/2021 20:11:32)
+2. LAPTOP-EBCTSM8H : \Processor(_Total)\% Processor Time : 70.82% (1612795292 08/02/2021 20:11:32)
+3. LAPTOP-EBCTSM8H : \Thread(_Total/_Total)\Context Switches/sec : 102697.00 per second (1612795292 08/02/2021 20:11:32)
