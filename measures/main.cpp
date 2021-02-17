@@ -28,6 +28,7 @@
 #include "perf_collector.h"
 #include "nw_listener.h"
 #include "perf_server.h"
+#include"perf_ssl_server.h"
 
 // Need to link with Ws2_32.lib
 #pragma comment(lib, "ws2_32.lib")
@@ -39,14 +40,14 @@ int main()
 	using namespace counter_names;
 
 	local_reporter reporter;
-	perf_recorder recorder({ CPU, MEMINUSE_BYTES, CONTEXT_SWITCHES_PER_SEC }, 5, reporter);
+	perf_recorder recorder(5,reporter); // ({ CPU, MEMINUSE_BYTES, CONTEXT_SWITCHES_PER_SEC }, 5, reporter);
 
 	// nw_listener listener;
 	// listener.start_listening();
-	perf_server server;
+	perf_ssl_server server;
 	server.start_listening();
 
-
+	std::cout << "press enter to start shut down of server\n";
 	std::cin.get();
 	recorder.done = true;
 	// server.stopping = true;

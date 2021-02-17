@@ -7,6 +7,8 @@
 #include<algorithm>
 #include <stdexcept>
 #include <map>
+#include "counter_names.h"
+#include <iostream>
 
 namespace perf_monitor
 {
@@ -49,6 +51,18 @@ namespace perf_monitor
 		CollectQueryData();
 	}
 
+	perf_measures::perf_measures()
+	{
+		if (PdhOpenQuery(NULL, 1, &m_hQuery) != ERROR_SUCCESS)
+			throw std::runtime_error("init failed");
+
+		bool failed = false;
+		for (const auto& cntr_name : counter_names::list() ) if (!AddCounter(cntr_name)) failed = true;
+		if (failed) throw std::runtime_error("atleast one AddCounter failed: data not collected");
+
+		CollectQueryData();
+	}
+
 	perf_measures::~perf_measures()
 	{
 		PdhCloseQuery(&m_hQuery);
@@ -83,6 +97,7 @@ namespace perf_monitor
 		if (PdhAddCounter(m_hQuery, name.c_str(), 0, &hcntr) == ERROR_SUCCESS)
 		{
 			counter_map[name] = hcntr;
+			std::cout << "perf_measures: added counter '" << name << "'\n";
 			return true;
 		}
 

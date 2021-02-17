@@ -41,5 +41,27 @@ namespace perf_monitor
 		
 
 		}
+
+		const std::vector<std::string>& list()
+		{
+			static const std::vector<std::string> lst
+			{
+				std::string(CPU),
+				std::string(MEMINUSE_BYTES),
+				std::string(MEMAVAIL_BYTES),
+				std::string(MEMAVAIL_KB),
+				std::string(MEMAVAIL_MB),
+				std::string(MEMINUSE_PERCENT),
+				std::string(MEMLIMIT_BYTES),
+				std::string(DISK_IO_BYTES),
+				std::string(POWER_METER),
+				std::string(INTERRUPTS_PER_SEC),
+				std::string(NUM_PROCESSES),
+				std::string(NUM_THREADS),
+				std::string(CONTEXT_SWITCHES_PER_SEC)
+			};
+
+			return lst;
+		}
 	}
 }

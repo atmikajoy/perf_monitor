@@ -12,7 +12,8 @@ namespace perf_monitor
 {
 	struct perf_measures
 	{
-		perf_measures( std::initializer_list< std::string_view > counter_list = {} );
+		perf_measures( std::initializer_list< std::string_view > counter_list );
+		perf_measures(); // measure all counters
 		~perf_measures();
 		perf_measures& operator= (const perf_measures&) = delete;
 		perf_measures& operator= (perf_measures&&) = delete;

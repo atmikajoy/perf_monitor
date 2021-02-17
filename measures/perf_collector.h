@@ -14,6 +14,9 @@ namespace perf_monitor
 		perf_recorder( std::initializer_list<std::string_view> counter_names, unsigned int collect_interval_secs, 
 			           reporter& rptr );
 
+		// collect all
+		perf_recorder(unsigned int collect_interval_secs, reporter& rptr);
+
 		~perf_recorder();
 
 		perf_recorder(const perf_recorder&) = delete;

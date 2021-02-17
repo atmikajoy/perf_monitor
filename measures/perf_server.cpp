@@ -4,6 +4,7 @@
 #include "nw_message.h"
 #include "request.h"
 #include <thread>
+#include <iostream>
 
 namespace perf_monitor
 {
@@ -108,6 +109,7 @@ namespace perf_monitor
 		while ( !stopping && connected && recv_req(connected_socket, data_buff, request::STRING_LENGTH) == request::STRING_LENGTH)
 		{
 			const auto request = request::from_string(data_buff);
+			std::cout << "recd request on socket " << connected_socket << " : " << request.to_string() << '\n';
 			const auto cntrs = process_request(request);
 			for (const counter& cntr : cntrs )
 			{
@@ -127,6 +129,7 @@ namespace perf_monitor
 
 		if (shutdown(connected_socket, SD_RECEIVE) != SOCKET_ERROR)
 			closesocket(connected_socket);
+		std::cout << "socket connection on " << connected_socket << " is closed\n";
 		--num_connections;
 
 	}

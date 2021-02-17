@@ -6,6 +6,7 @@
 #include <ws2tcpip.h>
 #include <stdio.h>
 */
+#include <iostream>
 
 // Need to link with Ws2_32.lib
 #pragma comment(lib, "ws2_32.lib")
@@ -29,6 +30,14 @@ namespace perf_monitor
 	perf_recorder::perf_recorder(std::initializer_list<std::string_view> counter_names, unsigned int collect_interval_secs,
 		                           reporter& reprtr ) : measurer(counter_names), reprtr(reprtr)
 	{
+		std::cout << "perf_recorder: collect_interval == " << collect_interval_secs << " seconds\n";
+		collect_interval = std::chrono::seconds(collect_interval_secs);
+		std::thread(collect_thread, this).detach();
+	}
+
+	perf_recorder::perf_recorder(unsigned int collect_interval_secs, reporter& rptr) : reprtr(rptr)
+	{
+		std::cout << "perf_recorder: collect_interval == " << collect_interval_secs << " seconds\n";
 		collect_interval = std::chrono::seconds(collect_interval_secs);
 		std::thread(collect_thread, this).detach();
 	}

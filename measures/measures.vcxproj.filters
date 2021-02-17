@@ -75,6 +75,9 @@
     <ClInclude Include="nw_listener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="perf_ssl_server.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -132,6 +135,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="nw_listener.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="perf_ssl_server.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

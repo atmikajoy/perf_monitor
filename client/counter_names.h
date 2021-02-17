@@ -3,6 +3,7 @@
 
 #include <string_view>
 #include "counter.h"
+#include <vector>
 
 namespace perf_monitor
 {
@@ -26,6 +27,8 @@ namespace perf_monitor
 		counter::type_t counter_type(std::string_view name);
 
 		std::string description( const std::string& name, bool ucase = false );
+
+		const std::vector<std::string>& list();
 	}
 
 }

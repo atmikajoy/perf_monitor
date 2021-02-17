@@ -3,6 +3,7 @@
 
 #include <string_view>
 #include "counter.h"
+#include <vector>
 
 namespace perf_monitor
 {
@@ -24,6 +25,10 @@ namespace perf_monitor
 		constexpr std::string_view CONTEXT_SWITCHES_PER_SEC = "\\Thread(_Total/_Total)\\Context Switches/sec"; // #context swiotches per second
 	
 		counter::type_t counter_type(std::string_view name);
+
+		std::string description( const std::string& name, bool ucase = false );
+
+		const std::vector<std::string>& list();
 	}
 
 }

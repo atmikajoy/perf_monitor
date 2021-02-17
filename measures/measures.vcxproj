@@ -72,16 +72,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\boost\boost_1_73_0;$(IncludePath)</IncludePath>
+    <IncludePath>C:\vcpkg\vcpkg\packages\openssl_x86-windows\include;C:\boost\boost_1_73_0;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\vcpkg\vcpkg\packages\openssl_x86-windows\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\vcpkg\vcpkg\packages\openssl_x86-windows\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\vcpkg\vcpkg\packages\openssl_x86-windows\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnabled>false</VcpkgEnabled>
@@ -153,6 +156,7 @@
     <ClInclude Include="perfmon.h" />
     <ClInclude Include="perf_collector.h" />
     <ClInclude Include="perf_server.h" />
+    <ClInclude Include="perf_ssl_server.h" />
     <ClInclude Include="remote_reporter.h" />
     <ClInclude Include="reporter.h" />
     <ClInclude Include="request.h" />
@@ -176,6 +180,7 @@
     <ClCompile Include="perfmon.cpp" />
     <ClCompile Include="perf_collector.cpp" />
     <ClCompile Include="perf_server.cpp" />
+    <ClCompile Include="perf_ssl_server.cpp" />
     <ClCompile Include="remote_reporter.cpp" />
     <ClCompile Include="request.cpp" />
     <ClCompile Include="SecureSocket.cpp" />

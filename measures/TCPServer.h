@@ -56,6 +56,8 @@ public:
 
    bool Disconnect(const Socket ClientSocket) const;
 
+   std::string port() const { return m_strPort; }
+
    bool SetRcvTimeout(ASocket::Socket& ClientSocket, unsigned int msec_timeout);
    bool SetRcvTimeout(ASocket::Socket& ClientSocket, struct timeval Timeout);
    bool SetSndTimeout(ASocket::Socket& ClientSocket, unsigned int msec_timeout);

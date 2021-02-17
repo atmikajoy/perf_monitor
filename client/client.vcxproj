@@ -148,9 +148,11 @@
     <ClCompile Include="counter_names.cpp" />
     <ClCompile Include="nw_message.cpp" />
     <ClCompile Include="request.cpp" />
+    <ClCompile Include="SecureSocket.cpp" />
     <ClCompile Include="Socket.cpp" />
     <ClCompile Include="TCPClient.cpp" />
     <ClCompile Include="TCPServer.cpp" />
+    <ClCompile Include="TCPSSLClient.cpp" />
     <ClCompile Include="time_utils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -158,9 +160,11 @@
     <ClInclude Include="counter_names.h" />
     <ClInclude Include="nw_message.h" />
     <ClInclude Include="request.h" />
+    <ClInclude Include="SecureSocket.h" />
     <ClInclude Include="Socket.h" />
     <ClInclude Include="TCPClient.h" />
     <ClInclude Include="TCPServer.h" />
+    <ClInclude Include="TCPSSLClient.h" />
     <ClInclude Include="time_utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
