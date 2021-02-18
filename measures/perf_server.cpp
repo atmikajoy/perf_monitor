@@ -22,7 +22,7 @@ namespace perf_monitor
 			std::vector<counter> result;
 			for ( const counter& c : cntrs)
 				if (c.sl_no >= req.start_sl_no && c.time >= req.start_time)
-					result.push_back(std::move(c));
+					result.push_back(c);
 			return result;
 		}
 

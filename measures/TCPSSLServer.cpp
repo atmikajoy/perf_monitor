@@ -128,6 +128,8 @@ bool CTCPSSLServer::Listen(SSLSocket& ClientSocket, size_t msec /*= ACCEPT_WAIT_
       /* The TLS/SSL handshake is successfully completed and  a TLS/SSL connection
        * has been established. Now all reads and writes must use SSL. */
       // peer_cert = SSL_get_peer_certificate(ClientSocket.m_pSSL);
+      m_oLog( "The TLS/SSL handshake is successfully completed and  a TLS/SSL connection" 
+              " has been established.Now all reads and writes must use SSL." );
       return true;
    }
 

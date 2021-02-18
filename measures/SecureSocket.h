@@ -48,7 +48,7 @@ public:
       SSLSocket& operator=(const SSLSocket&) = delete;
 
       // move constructor
-      SSLSocket(SSLSocket&& Sockother) :
+      SSLSocket(SSLSocket&& Sockother) noexcept :
         m_SockFd(Sockother.m_SockFd),
         m_pSSL(Sockother.m_pSSL),
         m_pCTXSSL(Sockother.m_pCTXSSL),
@@ -61,7 +61,7 @@ public:
       }
 
       // move assignment operator
-      SSLSocket& operator=(SSLSocket&& Sockother)
+      SSLSocket& operator=(SSLSocket&& Sockother) noexcept
       {
          if (this != &Sockother)
          {

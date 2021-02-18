@@ -1,5 +1,7 @@
-
+#ifndef OPENSSL
 #define OPENSSL
+#endif // OPENSSL
+
 #include"TCPSSLClient.h"
 #include "TCPClient.h"
 #include <iostream>
@@ -46,6 +48,9 @@ int main()
     const std::string port = "12345";
 
     CTCPSSLClient tcp_client(log);
+    tcp_client.SetSSLCertFile("C:\\perf_mon_cert\\client_cert.pem");
+    tcp_client.SetSSLKeyFile("C:\\perf_mon_cert\\client_key.pem");
+
     if (!tcp_client.Connect(address, port))
     {
         std::cout << "connect failed\n";

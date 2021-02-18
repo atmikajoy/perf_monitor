@@ -17,9 +17,9 @@ namespace perf_monitor
 		std::vector<counter> filter(std::vector<history::cref_counter> cntrs, const request& req)
 		{
 			std::vector<counter> result;
-			for (const counter& c : cntrs)
+			for ( const counter& c : cntrs)
 				if (c.sl_no >= req.start_sl_no && c.time >= req.start_time)
-					result.push_back(std::move(c));
+					result.push_back(c);
 			return result;
 		}
 
@@ -68,12 +68,12 @@ namespace perf_monitor
 			if (server->Listen(socket))
 			{
 				++num_connections; 
-				std::thread(client_thread, socket).detach();
+				std::thread(client_thread, std::move(socket), server).detach();
 			}	
 		}
 	}
 
-	int perf_ssl_server::recv_req(SSLSocket connect_socket, char* data_buff, std::size_t sz)
+	int perf_ssl_server::recv_req(SSLSocket& connect_socket, char* data_buff, std::size_t sz)
 	{
 
 		int tries = 0;
@@ -107,7 +107,7 @@ namespace perf_monitor
 
 		bool connected = true;
 
-		while (!stopping && connected && recv_req(std::move(connected_socket), data_buff, request::STRING_LENGTH) == request::STRING_LENGTH)
+		while (!stopping && connected && recv_req(connected_socket, data_buff, request::STRING_LENGTH) == request::STRING_LENGTH)
 		{
 			const auto request = request::from_string(data_buff);
 			std::cout << "recd request on socket " << connected_socket.m_SockFd << " : " << request.to_string() << '\n';
@@ -128,7 +128,7 @@ namespace perf_monitor
 			}
 		}
 
-		if (server->Disconnect(connected_socket) == SOCKET_ERROR)
+		if (server->Disconnect(connected_socket) == false)
 			std::cout << "socket connection on " << connected_socket.m_SockFd << " is closed\n";
 		--num_connections;
 

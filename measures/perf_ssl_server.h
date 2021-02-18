@@ -3,7 +3,9 @@
 
 #include<string>
 #include<atomic>
+#ifndef OPENSSL
 #define OPENSSL
+#endif // OPENSSL 
 #include "TCPSSLServer.h"
 
 namespace perf_monitor
@@ -17,7 +19,7 @@ namespace perf_monitor
 
 		void start_listening();
 		void initiate_shutdown();
-		static int recv_req(SSLSocket connect_socket, char* data_buff, std::size_t sz);
+		static int recv_req(SSLSocket& connect_socket, char* data_buff, std::size_t sz);
 		static void listener_thread(perf_ssl_server* server);
 		static void client_thread(SSLSocket connected_socket, perf_ssl_server* server);
 		static void trim_thread(perf_ssl_server* server);
